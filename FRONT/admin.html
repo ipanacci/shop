@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+    <h1> Dashboard admin </h1>
+    <section>
+        <h2> API users</h2>
+        <div>
+            <h3> Ajout d'un user</h3>
+            <form id = "userForm">
+                <input type="text" name="firstname" placeholder="firstname">
+                <input type="text" name="lastname" placeholder="lastname">
+                <input type="email" name="email" placeholder="firstname@gmail.com">
+                <input type="password" name="password" placeholder="password">
+                <input id="userSubmit" type="submit" value="Confirm">
+            </form>
+        </div>
+        <div>
+            <h3> Obtenir la liste de tous les users </h3>
+            <button id="userList"> Obtenir </button>
+        </div>
+        <div>
+            <h3> Obtenir un user par son "id"</h3>
+            <form id="getByIdForm">
+                <input type="text" name="userId">
+                <input id = "getByIdSubmit" type="submit" value="Obtenir">
+            </form>
+        </div>
+        <div>
+            <h3> Modification d'un user </h3>
+            <form id="updateUserForm">
+                <input type="text" name="userId" placeholder="Id du user">
+                <input type="text" name="firstname" placeholder="firstname">
+                <input type="text" name="lastname" placeholder="lastname">
+                <input type="password" name="password" placeholder="password">
+                <input id="updateUserSubmit" type="submit" value="Confirm">
+            </form>
+        </div>
+        <div>
+            <h3> Suppression d'un user </h3>
+            <form id = "deleteUserForm">
+                <input type="text" name="userId">
+                <input id = "deleteUserSubmit" type="submit" value="Confirm">
+            </form>
+        </div>
+    </section>
+    <section>
+        <h2> API produits </h2>
+    </section>
+    <script src="./js/admin.js"></script>
+</body>
+</html>
