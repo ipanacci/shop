@@ -1,4 +1,4 @@
-import UserRepository from "../repository/UserRepository";
+import UserRepository from "../repository/UserRepository.js";
 const User = new UserRepository();
 
 class AuthController {
@@ -7,24 +7,24 @@ class AuthController {
     }
 
     process(request, response) {
-        let email = request.body.email;
+        let email = request.body.email.trim();
         let password = request.body.password;
         User.connect(email, password)
         .then(result => {
             if (result === false){
+                console.log("error");
                 response.status(400).json({error: 'Authentification échouée', email: email});   
             }
             else{
-                request.session.user = {
-                    connected : true,
-                    id : result._id,
-                    email : result.email,
-                    isAdmin : result.isAdmin,
-                    lastname : result.lastname,
-                    firstname : result.firstname
-                }
-                request.flash('notify', 'vous êtes connecté');
-                response.status(200).json("OK");
+                request.session.connected = true;
+                request.session.email = result.email;
+                request.session.isAdmin = result.isAdmin;
+                request.session.lastname = result.lastname;
+                request.session.firstname = result.firstname;
+                
+                console.log("coucou", request.sessionID);
+                //response.status(200).json(request.sessionID);
+                response.send(request.sessionID)
             }
         });
     }

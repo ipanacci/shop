@@ -10,11 +10,17 @@ const userDeleteButton = document.getElementById("deleteUserSubmit");
 
 function handleUserAdd(e){
     e.preventDefault();
-    let formData = new FormData(addUserForm);
-    const data = new URLSearchParams();
-    for (const pair of formData) {
-        data.append(pair[0], pair[1]);
-    }
+    // let formData = new FormData(addUserForm);
+    // const data = new URLSearchParams();
+    // for (const pair of formData) {
+    //     data.append(pair[0], pair[1]);
+    // }
+    data = new URLSearchParams([
+        ["firstname",  addUserForm.firstname.value],
+        ["lastname", addUserForm.lastname.value],
+        ["email", addUserForm.email.value],
+        ["password", addUserForm.password.value]
+    ]);
     fetch("http://localhost:3000/api/user", {
         method:'POST',
         mode: 'cors',
@@ -46,12 +52,17 @@ function handleGetUser(e){
 
 function handleUpdateUser(e){
     e.preventDefault();
-    let formData = new FormData(userUpdateForm);
     const id = userUpdateForm.userId.value;
-    const data = new URLSearchParams();
-    for (const pair of formData) {
-        if (pair[0] !== "userId") data.append(pair[0], pair[1]);
-    }
+    // let formData = new FormData(userUpdateForm);
+    // const data = new URLSearchParams();
+    // for (const pair of formData) {
+    //     if (pair[0] !== "userId") data.append(pair[0], pair[1]);
+    // }
+    data = new URLSearchParams([
+        ["firstname",  userUpdateForm.firstname.value],
+        ["lastname", userUpdateForm.lastname.value],
+        ["password", userUpdateForm.password.value]
+    ]);
     fetch(`http://localhost:3000/api/user/${id}`, {
         method: 'PUT',
         mode:'cors',

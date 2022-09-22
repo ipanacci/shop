@@ -45,6 +45,7 @@ class UserController {
         try {
             const result = await User.addUser(entity);
             response.status(200).json(result);
+            // response.redirect("http://127.0.0.1:5501/FRONT/admin.html"); not working
         }   
         catch (error){
             response.status(400).json({error: `la demande n'est pas valide`});

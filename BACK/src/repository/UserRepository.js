@@ -34,9 +34,9 @@ class UserRepository{
 
     async addUser(userEntity){ // pour l'instant pas crypté
         try{
-            const user = await User.create({firstname: userEntity.firstname,
-                                            lastname: userEntity.lastname,
-                                            email: userEntity.email,
+            const user = await User.create({firstname: userEntity.firstname.trim(),
+                                            lastname: userEntity.lastname.trim(),
+                                            email: userEntity.email.trim(),
                                             password: userEntity.password});
             return user;
         }
